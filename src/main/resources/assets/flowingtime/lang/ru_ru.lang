@@ -1,0 +1,26 @@
+#Group
+itemGroup.flowingtime=Flowing Time
+
+#Modes
+fl.timewatch.mode=Режим контроля времени: %s
+fl.timewatch.mode_switch=Режим контроля времени изменён на: %s
+fl.timewatch.ff=Перемотка вперёд
+fl.timewatch.off=Выкл
+fl.timewatch.rw=Перемотка
+
+#Tooltips
+fl.timewatch.tooltip1=Станьте хозяином времени
+fl.timewatch.tooltip2=ПКМ, чтобы изменить режим
+fl.pedestal.tooltip1=ПКМ, удерживая часы в руке
+fl.pedestal.tooltip2=ЛКМ, чтобы вытащить предмет
+fl.timewatch.pedestal1=Даёт бонус в %d такта(-ов) ближайшим блокам каждый такт
+
+#Items
+item.flowingtime:timewatch.name=Часы времени
+
+#Tiles
+tile.flowingtime:flpedestal.name=Пьедестал
+
+#Keys
+fl.key.charge=Заряд
+fl.key.mode=Режим

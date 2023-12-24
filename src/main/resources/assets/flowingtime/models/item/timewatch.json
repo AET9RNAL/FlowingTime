@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "flowingtime:items/time_watch_off"
+  },
+  "overrides": [{
+    "predicate": {
+      "flowingtime:active": 1
+    },
+    "model": "flowingtime:item/timewatch_on"
+  }]
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "flowingtime",
+  "name": "Flowing Time",
+  "description": "A tick-rate manipulation mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["AETERNAL"],
+  "credits": "AETERNAL",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

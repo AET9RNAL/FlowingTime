@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "flowingtime:timewatch"
+  },
+  "pattern": [
+    "GSG",
+    "SCS",
+    "GSG"
+  ],
+  "type": "forge:ore_shaped",
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:nether_star"
+    },
+    "C":
+    {
+      "item": "minecraft:end_crystal"
+    },
+    "G":
+    {
+      "item": "minecraft:gold_block"
+    }
+  }
+}

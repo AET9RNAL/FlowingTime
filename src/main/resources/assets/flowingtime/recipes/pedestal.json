@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "flowingtime:flpedestal"
+  },
+  "pattern": [
+    "SOS",
+    "SOS",
+    "OEO"
+  ],
+  "type": "forge:ore_shaped",
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:nether_star"
+    },
+    "O":
+    {
+      "item": "minecraft:obsidian"
+    },
+    "E":
+    {
+      "item": "minecraft:dragon_egg"
+    }
+  }
+}
