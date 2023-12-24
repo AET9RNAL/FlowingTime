@@ -50,9 +50,7 @@ public class FlowingTime
         PacketHandler.register();
         proxy.registerKeyBinds();
         Config.loadNormalConfig(e.getSuggestedConfigurationFile());
-        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
-            ClientRegistry.bindTileEntitySpecialRenderer(FLPedestalTile.class, new FLPedestalRender());
-        }
+        proxy.registerRenderers();
     }
 
     @EventHandler

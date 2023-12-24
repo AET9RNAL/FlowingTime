@@ -11,9 +11,11 @@ import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Objects;
@@ -33,7 +35,9 @@ public final class ObjHandler {
         IForgeRegistry<Item> r = evt.getRegistry();
         Item itemBlock = new ItemFLPedestal(flPedestal).setRegistryName(Objects.requireNonNull(flPedestal.getRegistryName()));
         r.register(itemBlock);
-        ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation(flPedestal.getRegistryName(), "inventory"));
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+            ModelLoader.setCustomModelResourceLocation(itemBlock, 0, new ModelResourceLocation(flPedestal.getRegistryName(), "inventory"));
+        }
         initTileEntities();
     }
     private static void initTileEntities() {

@@ -6,5 +6,6 @@ public class ItemFLPedestal extends ItemBlockFL {
 
     public ItemFLPedestal(Block block) {
         super(block);
+
     }
 }

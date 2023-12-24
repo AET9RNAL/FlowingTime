@@ -10,18 +10,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
     @Override
     public void preInit() {
         super.preInit();
+
     }
 
     @Override
     public void init() {
         super.init();
     }
+    @Override
+    public void registerRenderers(){
+        ClientRegistry.bindTileEntitySpecialRenderer(FLPedestalTile.class, new FLPedestalRender());
+    }
+
 
     @Override
     public void registerKeyBinds()
