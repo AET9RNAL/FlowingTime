@@ -1,4 +1,4 @@
-Flowing Time is a tick accelerationg mod. Basically a standalone version of ProjectE's dark matter pedestal and time watch
+Flowing Time is a tick accelerating mod. Inspired by ProjectE's dark matter pedestal and time watch
 
 Contents:
 
