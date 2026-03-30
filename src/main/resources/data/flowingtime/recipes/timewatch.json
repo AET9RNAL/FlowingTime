@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GSG",
+    "SCS",
+    "GSG"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "C": {
+      "item": "minecraft:end_crystal"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "flowingtime:timewatch"
+  }
+}

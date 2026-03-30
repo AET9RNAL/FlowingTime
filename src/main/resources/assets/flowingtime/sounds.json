@@ -1,0 +1,12 @@
+{
+  "item.pecharge": {
+    "sounds": [
+      "flowingtime:pecharge"
+    ]
+  },
+  "item.peuncharge": {
+    "sounds": [
+      "flowingtime:peuncharge"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SOS",
+    "SOS",
+    "OEO"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "E": {
+      "item": "minecraft:dragon_egg"
+    }
+  },
+  "result": {
+    "item": "flowingtime:flpedestal"
+  }
+}
