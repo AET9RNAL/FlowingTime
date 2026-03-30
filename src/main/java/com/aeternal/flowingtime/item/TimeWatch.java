@@ -4,6 +4,8 @@ import com.aeternal.flowingtime.ModConfig;
 import com.aeternal.flowingtime.api.item.IItemCharge;
 import com.aeternal.flowingtime.api.item.IModeChanger;
 import com.aeternal.flowingtime.api.item.IPedestalItem;
+import com.aeternal.flowingtime.api.annotation.AutoRegisterItem;
+import com.aeternal.flowingtime.registry.ModCreativeTabs;
 import com.aeternal.flowingtime.block.entity.FLPedestalBlockEntity;
 import com.aeternal.flowingtime.util.ItemHelper;
 import com.aeternal.flowingtime.util.WorldHelper;
@@ -42,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@AutoRegisterItem("timewatch")
 public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IItemCharge {
 
     public static final String TAG_ACTIVE = "Active";
@@ -51,8 +54,8 @@ public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IIte
             "com.aeternal.flowingtime.block.entity.FLPedestalBlockEntity"
     );
 
-    public TimeWatch(Properties properties) {
-        super(properties);
+    public TimeWatch() {
+        super(new Item.Properties().tab(ModCreativeTabs.MOD_TAB).stacksTo(1));
     }
 
     @Nonnull

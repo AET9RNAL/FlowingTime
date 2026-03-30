@@ -2,6 +2,9 @@ package com.aeternal.flowingtime.block;
 
 import com.aeternal.flowingtime.api.item.IPedestalItem;
 import com.aeternal.flowingtime.block.entity.FLPedestalBlockEntity;
+import com.aeternal.flowingtime.api.annotation.AutoRegisterBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import com.aeternal.flowingtime.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -28,12 +31,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+@AutoRegisterBlock(value = "flpedestal", hasItem = true)
 public class PedestalBlock extends BaseEntityBlock {
 
     private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 12, 13);
 
-    public PedestalBlock(Properties properties) {
-        super(properties);
+    public PedestalBlock() {
+        super(BlockBehaviour.Properties.of(Material.METAL)
+                .strength(1.0f)
+                .lightLevel(s -> 12)
+                .noOcclusion());
     }
 
     @Nonnull

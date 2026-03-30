@@ -26,7 +26,10 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Random;
+import com.aeternal.flowingtime.api.annotation.AutoRegisterBlockEntity;
+import com.aeternal.flowingtime.block.PedestalBlock;
 
+@AutoRegisterBlockEntity(value = "flpedestal", validBlocks = {PedestalBlock.class})
 public class FLPedestalBlockEntity extends BlockEntity {
 
     private static final int RANGE = 4;

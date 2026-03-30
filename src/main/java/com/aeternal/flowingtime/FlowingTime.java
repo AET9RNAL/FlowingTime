@@ -2,9 +2,7 @@ package com.aeternal.flowingtime;
 
 import com.aeternal.flowingtime.integration.IntegrationManager;
 import com.aeternal.flowingtime.network.PacketHandler;
-import com.aeternal.flowingtime.registry.ModBlockEntities;
-import com.aeternal.flowingtime.registry.ModBlocks;
-import com.aeternal.flowingtime.registry.ModItems;
+import com.aeternal.flowingtime.registry.AnnotationRegistryProcessor;
 import com.aeternal.flowingtime.registry.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,9 +30,7 @@ public class FlowingTime {
                     "and Flowing Time was designed to be standalone.");
         }
 
-        ModBlocks.BLOCKS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
-        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        AnnotationRegistryProcessor.init(modEventBus);
         ModSounds.SOUNDS.register(modEventBus);
 
 
