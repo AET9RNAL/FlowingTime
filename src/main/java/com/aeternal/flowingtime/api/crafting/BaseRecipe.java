@@ -16,7 +16,9 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.lang.SuppressWarnings;
 
+@SuppressWarnings("unused")
 public class BaseRecipe extends ShapedRecipe {
 
     private final ItemStack output;

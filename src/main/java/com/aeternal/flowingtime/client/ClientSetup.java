@@ -19,6 +19,7 @@ public class ClientSetup {
     public static void init(IEventBus modEventBus) {
     }
 
+    @SuppressWarnings({"removal", "null"})
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {

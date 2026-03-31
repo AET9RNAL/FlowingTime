@@ -17,7 +17,9 @@ import net.minecraft.world.level.Level;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.lang.SuppressWarnings;
 
+@SuppressWarnings("unused")
 public class BaseShapelessRecipe extends ShapelessRecipe {
 
     final NonNullList<Ingredient> listIngridient;
@@ -115,6 +117,7 @@ public class BaseShapelessRecipe extends ShapelessRecipe {
         return this.output.copy();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public NonNullList<ItemStack> getRemainingItems(CraftingContainer p_44004_) {
         final NonNullList<ItemStack> list = NonNullList.withSize(p_44004_.getContainerSize(), ItemStack.EMPTY);

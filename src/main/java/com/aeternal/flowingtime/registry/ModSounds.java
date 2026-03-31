@@ -6,7 +6,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
+@SuppressWarnings("removal")
 public class ModSounds {
 
     public static final DeferredRegister<SoundEvent> SOUNDS =

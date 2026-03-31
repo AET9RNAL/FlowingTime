@@ -12,7 +12,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -49,7 +48,9 @@ public class FLPedestalBlockEntity extends BlockEntity {
             if (!be.inventory.getStackInSlot(0).isEmpty()) {
                 Item item = be.inventory.getStackInSlot(0).getItem();
                 if (item instanceof IPedestalItem pedestalItem) {
-                    pedestalItem.updateInPedestal(level, pos);
+                    if (level != null && pos != null) {
+                        pedestalItem.updateInPedestal(level, pos);
+                    }
                 }
                 if (be.particleCooldown <= 0) {
                     be.spawnParticles();
@@ -63,6 +64,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         }
     }
 
+    @SuppressWarnings("all")
     private void spawnParticles() {
         if (level == null || !level.isClientSide) return;
 
@@ -105,6 +107,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         }
     }
 
+    @SuppressWarnings("all")
     public void setActive(boolean newState) {
         if (newState != this.isActive && level != null) {
             if (newState) {
@@ -155,6 +158,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         return new AABB(worldPosition.offset(-RANGE, -RANGE, -RANGE), worldPosition.offset(RANGE, RANGE, RANGE));
     }
 
+    @SuppressWarnings("all")
     @Override
     public void load(@Nonnull CompoundTag tag) {
         super.load(tag);
@@ -164,6 +168,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         previousRedstoneState = tag.getBoolean("powered");
     }
 
+    @SuppressWarnings("all")
     @Override
     protected void saveAdditional(@Nonnull CompoundTag tag) {
         super.saveAdditional(tag);
@@ -173,6 +178,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         tag.putBoolean("powered", previousRedstoneState);
     }
 
+    @SuppressWarnings("null")
     @Nonnull
     @Override
     public CompoundTag getUpdateTag() {
@@ -187,6 +193,7 @@ public class FLPedestalBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
+    @SuppressWarnings("all")
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {

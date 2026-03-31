@@ -42,31 +42,35 @@ public class PedestalBlock extends BaseEntityBlock {
                 .lightLevel(s -> 12)
                 .noOcclusion());
     }
-
+    @SuppressWarnings("all")
     @Nonnull
     @Override
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter level, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
         return SHAPE;
     }
 
+    @SuppressWarnings("all")
     @Nonnull
     @Override
     public RenderShape getRenderShape(@Nonnull BlockState state) {
         return RenderShape.MODEL;
     }
 
+    @SuppressWarnings("all")
     @Nullable
     @Override
     public BlockEntity newBlockEntity(@Nonnull BlockPos pos, @Nonnull BlockState state) {
         return new FLPedestalBlockEntity(pos, state);
     }
 
+    @SuppressWarnings("all")
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@Nonnull Level level, @Nonnull BlockState state, @Nonnull BlockEntityType<T> type) {
         return createTickerHelper(type, ModBlockEntities.FL_PEDESTAL.get(), FLPedestalBlockEntity::tick);
     }
-
+    
+    @SuppressWarnings("all")
     @Override
     public void attack(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player) {
         if (!level.isClientSide) {
@@ -75,6 +79,7 @@ public class PedestalBlock extends BaseEntityBlock {
         }
     }
 
+    @SuppressWarnings("all")
     @Nonnull
     @Override
     public InteractionResult use(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos,
@@ -102,7 +107,7 @@ public class PedestalBlock extends BaseEntityBlock {
         return InteractionResult.SUCCESS;
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("all")
     @Override
     public void onRemove(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos,
                          @Nonnull BlockState newState, boolean isMoving) {
@@ -112,7 +117,7 @@ public class PedestalBlock extends BaseEntityBlock {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("all")
     @Override
     public void neighborChanged(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos,
                                 @Nonnull Block neighbor, @Nonnull BlockPos neighborPos, boolean isMoving) {
@@ -131,6 +136,7 @@ public class PedestalBlock extends BaseEntityBlock {
         }
     }
 
+    @SuppressWarnings("all")
     @Override
     public void appendHoverText(@Nonnull ItemStack stack, @Nullable BlockGetter level,
                                 @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flag) {

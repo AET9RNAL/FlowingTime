@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 
 public class FLPedestalRenderer implements BlockEntityRenderer<FLPedestalBlockEntity> {
 
@@ -22,15 +23,17 @@ public class FLPedestalRenderer implements BlockEntityRenderer<FLPedestalBlockEn
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         ItemStack stack = be.getInventory().getStackInSlot(0);
         if (stack.isEmpty()) return;
-        if (be.getLevel() == null) return;
-
+        
+        Level level = be.getLevel();
+        if (level == null) return;
+                        
         poseStack.pushPose();
 
         // Position above pedestal
         poseStack.translate(0.5, 0.7, 0.5);
 
         // Bobbing animation
-        long gameTime = be.getLevel().getGameTime();
+        long gameTime = level.getGameTime();
         float bob = Mth.sin((gameTime + partialTick) / 10.0F) * 0.1F + 0.1F;
         poseStack.translate(0, bob, 0);
 

@@ -57,7 +57,7 @@ public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IIte
     public TimeWatch() {
         super(new Item.Properties().tab(ModCreativeTabs.MOD_TAB).stacksTo(1));
     }
-
+    @SuppressWarnings("all")
     @Nonnull
     @Override
     public InteractionResultHolder<ItemStack> use(@Nonnull Level level, @Nonnull Player player, @Nonnull InteractionHand hand) {
@@ -71,6 +71,7 @@ public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IIte
         return InteractionResultHolder.success(stack);
     }
 
+    @SuppressWarnings("all")
     @Override
     public void inventoryTick(@Nonnull ItemStack stack, @Nonnull Level level, @Nonnull Entity entity, int slotId, boolean isSelected) {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
@@ -219,7 +220,7 @@ public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IIte
         tag.putBoolean(TAG_ACTIVE, !tag.getBoolean(TAG_ACTIVE));
         return true;
     }
-
+    @SuppressWarnings("all")    
     @Override
     public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level level,
                                 @Nonnull List<Component> list, @Nonnull TooltipFlag flags) {
@@ -268,17 +269,19 @@ public class TimeWatch extends Item implements IModeChanger, IPedestalItem, IIte
     public int getNumCharges(@Nonnull ItemStack stack) {
         return 4;
     }
-
+    
+    @SuppressWarnings("all")
     @Override
     public boolean isBarVisible(@Nonnull ItemStack stack) {
         return true;
     }
-
+    @SuppressWarnings("all")
     @Override
     public int getBarWidth(@Nonnull ItemStack stack) {
         return Math.round((float) getCharge(stack) / getNumCharges(stack) * 13.0F);
     }
 
+    @SuppressWarnings("all")
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, @Nonnull ItemStack newStack, boolean slotChanged) {
         if (oldStack.getItem() != newStack.getItem()) return true;

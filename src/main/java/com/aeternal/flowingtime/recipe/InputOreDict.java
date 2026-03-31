@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
+@SuppressWarnings("removal")
 public class InputOreDict implements IInputItemStack {
 
     public final Integer meta;
@@ -44,7 +44,7 @@ public class InputOreDict implements IInputItemStack {
             ores.add(ItemStack.of(list.getCompound(i)));
         }
     }
-
+    @SuppressWarnings("all")
     public InputOreDict(String input, int amount, Integer meta) {
         ResourceLocation input1 = new ResourceLocation(input.toLowerCase());
         this.amount = amount;
@@ -57,7 +57,7 @@ public class InputOreDict implements IInputItemStack {
             stack.setCount(this.getAmount());
         }
     }
-
+    @SuppressWarnings("all")
     public InputOreDict(TagKey<Item> tag, int amount) {
         this.amount = amount;
         this.meta = 0;
