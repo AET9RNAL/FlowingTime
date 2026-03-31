@@ -22,18 +22,23 @@ import java.util.List;
 
 public class AnnotationRegistryProcessor {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, FlowingTime.MOD_ID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FlowingTime.MOD_ID);
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, FlowingTime.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+            FlowingTime.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+            FlowingTime.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister
+            .create(ForgeRegistries.BLOCK_ENTITY_TYPES, FlowingTime.MOD_ID);
 
-    private static void validateClass(Class<?> clazz, Class<?> expectedSuperClass) {
+    private static void validateClass(Class<?> clazz, Class<?> expectedSuperClass, Class<?>... constructorParams) {
         if (!expectedSuperClass.isAssignableFrom(clazz)) {
-            throw new RuntimeException("Auto-registered class " + clazz.getName() + " must extend " + expectedSuperClass.getSimpleName());
+            throw new RuntimeException(
+                    "Auto-registered class " + clazz.getName() + " must extend " + expectedSuperClass.getSimpleName());
         }
         try {
-            clazz.getDeclaredConstructor();
+            clazz.getDeclaredConstructor(constructorParams);
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException("Auto-registered class " + clazz.getName() + " is missing a zero-argument constructor.");
+            throw new RuntimeException(
+                    "Auto-registered class " + clazz.getName() + " is missing required constructor.");
         }
     }
 
@@ -63,8 +68,9 @@ public class AnnotationRegistryProcessor {
                             validateClass(clazz, Block.class);
                             String name = (String) annotationData.annotationData().get("value");
                             Boolean hasItem = (Boolean) annotationData.annotationData().get("hasItem");
-                            if (hasItem == null) hasItem = true; // default
-                            
+                            if (hasItem == null)
+                                hasItem = true; // default
+
                             RegistryObject<Block> blockReg = BLOCKS.register(name, () -> {
                                 try {
                                     return (Block) clazz.getDeclaredConstructor().newInstance();
@@ -72,7 +78,7 @@ public class AnnotationRegistryProcessor {
                                     throw new RuntimeException("Failed to instantiate block " + name, e);
                                 }
                             });
-                            
+
                             if (hasItem) {
                                 ITEMS.register(name, () -> {
                                     Block blockInst = blockReg.get();
@@ -83,7 +89,8 @@ public class AnnotationRegistryProcessor {
                                     } catch (NoSuchMethodException e) {
                                         props.tab(ModCreativeTabs.MOD_TAB); // Fallback
                                     } catch (Exception e) {
-                                        FlowingTime.LOGGER.error("Error calling getItemProperties on " + clazz.getName(), e);
+                                        FlowingTime.LOGGER
+                                                .error("Error calling getItemProperties on " + clazz.getName(), e);
                                         props.tab(ModCreativeTabs.MOD_TAB);
                                     }
                                     return new BlockItem(blockInst, props);
@@ -91,10 +98,13 @@ public class AnnotationRegistryProcessor {
                             }
                         } else if (annotationData.annotationType().equals(beType)) {
                             Class<?> clazz = Class.forName(annotationData.clazz().getClassName());
-                            validateClass(clazz, BlockEntity.class);
+                            validateClass(clazz, BlockEntity.class,
+                                    net.minecraft.core.BlockPos.class,
+                                    net.minecraft.world.level.block.state.BlockState.class);
                             String name = (String) annotationData.annotationData().get("value");
-                            List<Type> validBlockTypes = (List<Type>) annotationData.annotationData().get("validBlocks");
-                            
+                            List<Type> validBlockTypes = (List<Type>) annotationData.annotationData()
+                                    .get("validBlocks");
+
                             BLOCK_ENTITIES.register(name, () -> {
                                 try {
                                     List<Block> validBlocks = new ArrayList<>();
@@ -106,23 +116,28 @@ public class AnnotationRegistryProcessor {
                                             }
                                         }
                                     }
-                                    
+
                                     BlockEntityType.BlockEntitySupplier<BlockEntity> supplier = (pos, state) -> {
                                         try {
-                                            return (BlockEntity) clazz.getDeclaredConstructor(net.minecraft.core.BlockPos.class, net.minecraft.world.level.block.state.BlockState.class).newInstance(pos, state);
+                                            return (BlockEntity) clazz
+                                                    .getDeclaredConstructor(net.minecraft.core.BlockPos.class,
+                                                            net.minecraft.world.level.block.state.BlockState.class)
+                                                    .newInstance(pos, state);
                                         } catch (Exception e) {
                                             throw new RuntimeException(e);
                                         }
                                     };
-                                    
-                                    return BlockEntityType.Builder.of(supplier, validBlocks.toArray(new Block[0])).build(null);
+
+                                    return BlockEntityType.Builder.of(supplier, validBlocks.toArray(new Block[0]))
+                                            .build(null);
                                 } catch (Exception e) {
                                     throw new RuntimeException("Failed to register BlockEntity " + name, e);
                                 }
                             });
                         }
                     } catch (Exception e) {
-                        FlowingTime.LOGGER.error("Failed to process annotation for " + annotationData.clazz().getClassName(), e);
+                        FlowingTime.LOGGER
+                                .error("Failed to process annotation for " + annotationData.clazz().getClassName(), e);
                     }
                 });
 
